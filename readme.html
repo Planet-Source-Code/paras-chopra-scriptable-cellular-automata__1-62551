@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Cell Laboratory v1.0</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<div align="center"> 
+  <p><font face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="4"><a href="http://naramcheez.paraschopra.com/celllab/index.php">Cell 
+    Laboratory</a> v1.0</font></strong></font></p>
+  <p><strong><font size="4" face="Verdana, Arial, Helvetica, sans-serif"><img src="hodge.gif" width="300" height="200"></font></strong></p>
+  <p><em><font size="3" face="Verdana, Arial, Helvetica, sans-serif">- By <a href="www.paraschopra.com">Paras 
+    Chopra</a></font></em></p>
+  <p><a href="#description">General Description</a> | <a href="#controls">Basic 
+    Controls</a> | <a href="#scripting_lang">Scripting Language</a></p>
+  <h3 align="left">&nbsp;</h3>
+  <h3 align="left"><font size="3"><a name="description" id="description"></a>General Description</font></h3>
+  <p align="left">This program is an experimentation toolkit for a 2D cellular 
+    automata. Cell Laboratory basically separates the rules and the field where 
+    action is happening. It offers customizable rule and field system. It means, 
+    a user is able to run the cellular automata using any of him custom rule. 
+    This program offers Save/Open functionality for both rules and field.</p>
+  <p align="left"><em>What is cellular automata?</em><br>
+    Cellular automata is a field of AI. Cellular automata is implementation of 
+    algorithm on a matrix of cells. This is 2D cellular automata because cells 
+    are arranged in a columns and rows. There is a basic rule which determines 
+    the state of a cell. By state I mean the condition of on or off of a cell. 
+    In my implementation color black is on, while white is off.</p>
+  <p align="left"><em>What do you mean by 'rule'?</em><br>
+    By rule, I mean: a basic condition applied to each and every cell to determine 
+    its current state. The current state is influenced by the previous state of 
+    itself and/or the previous state of its neighbors.</p>
+  <p align="left"><em>What do you mean by 'neighbours'?</em><br>
+    In 2D, each cell is surrounded by 8 other cells. Take a look at any cell in 
+    a spreadsheet application and count the number of cells surrounding that particular 
+    cell. You'll find that it is 8. <br>
+    Similarly, the number of neighbours in 1D is 2 and in 3D it is 26.</p>
+  <p align="left">A graphical representation of cell's neighbours numbering from 
+    1-8. This is the convention being used by the Cell Laboratory v1.0</p>
+  <p align="centre">1 | 2 | 3 <br>
+    4 | X | 5 <br>
+    6 | 7 | 8</p>
+  <p align="left"><em>Which is the default rule?</em><br>
+    The default rule of the cellular automata by the rule called &quot;<strong>Conway's 
+    game of life</strong>&quot;. It is a very famous rule and the most startling 
+    one. It is basically defined as following:</p>
+  <p align="left"><font size="3"> </font> 
+  <div align="left"> 
+    <pre><font size="3">If curcell = 0 Then<br>	If sumneb = 3 Then<br>		change = True<br>	End If<br>ElseIf curcell = 1 Then<br>	If sumneb &lt;&gt; 2 Then<br>		If sumneb &lt;&gt; 3 Then change = True<br>	End If<br>Else<br>	change = False<br>End If</font></pre>
+    <p><font size="3">The code means that if the current cell if OFF (0) and the 
+      3 of its neighbours are ON then turn the current cell ON. And also, if the 
+      current cell is ON (1) and of 8 of its neighbours only total of 1,4,5,6,7 
+      or 8 are ON then turn the current cell OFF.</font></p>
+    <p><font size="3">This simple rule gives amazing results. Often self-replicating 
+      or self-sustaining structures can be seen evolved.</font></p>
+    <hr>
+    <h3><font size="3"><a name="controls">Basic Controls</a></font></h3>
+    <p>&nbsp;</p>
+    <p align="center"><img src="screen.jpg" width="554" height="608"></p>
+    <p align="center"><em>A screenshot of Cell Laboratory v1.0</em></p>
+    <p>The controls are pretty self explanatory: 
+    <ul>
+      <li>'Run' starts the simulation process</li>
+      <li> 'Pause' pasuses the simulation proces</li>
+      <li>'Clear' turns all the cells to OFF state</li>
+      <li>'Random' fills the cells with random states. The screenshot above is 
+        the result of 'random' command.</li>
+      <li>By clicking on Options you get a dialog wherein you may change rows 
+        and columns and the sleep value.</li>
+      <li>Sleep value is the time interval in milliseconds between the updation 
+        of states in cellular automata</li>
+    </ul>
+    <p>You may save or load the field or script. Field the total of all cells 
+      in a CA. If you save a field and the later load it: then you will get exactly 
+      same pattern of cells as on the time when you saved it.</p>
+    <hr>
+    <h3><font size="3"><a name="scripting_lang" id="scripting_lang">Scripting 
+      Language</a></font></h3>
+    <p><font size="3">The scripting language being used in this program is VBScript. 
+      So It is being assumed that you know basic VBScript. </font></p>
+  </div>
+</div>
+
+    <div align="center">
+      <div align="left"><font size="3">Additional terms included which are program 
+        specific are:</font></div>
+    </div>
+<ul>
+  <li>curcell : It means the state of the current cell. It is a read-only term. 
+    It is equal to zero when the current cell is off and one when the current 
+    cell is on.</li>
+  <li> 
+    <div align="left">neb() : It is a read only array. Its range is from 1-8. 
+      It generally contains the state of neighbours 1-8. You may use it as neb(1) 
+      which means the first neighbour. The neighbour location is:<br>
+      <br>
+      1 | 2 | 3 <br>
+      4 | X | 5 <br>
+      6 | 7 | 8 <br>
+      <br>
+      Where X is the current cell. Now when use use neb(1), it will return value 
+      1 or 0, depending up whether first neighbouring cell is on or off.</div>
+  </li>
+  <li>sumofneb : It is a read only term. Its value is equal to: neb(1)+neb(2)+neb(3)+....+neb(8). 
+    It represents the number of neighbours which are in ON state.</li>
+
+</ul>
+You may further clarify these concepts by experimenting with above terms. 
+<div align="center"> <br>
+  <div align="left"> 
+    <hr>
+    <h3><font size="3"><a name="scripting_lang" id="scripting_lang">Made By</a></font></h3>
+    <p><font size="3">Paras Chopra</font><br>
+      <a href="http://www.paraschopra.com">http://www.paraschopra.com</a><br>
+      paraschopra [at] paraschopra [dot] com</p>
+    <p>Program Webpage: <a href="naramcheez.paraschopra.com/celllab/index.php">http://naramcheez.paraschopra.com/celllab/index.php</a></p>
+  </div>
+</div>
+</body>
+</html>

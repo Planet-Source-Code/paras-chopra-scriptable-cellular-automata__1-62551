@@ -1,0 +1,11 @@
+If curcell = 0 Then
+	If sumneb = 3 Then
+		change = True
+	End If
+ElseIf curcell = 1 Then
+	If sumneb <> 2 Then
+		If sumneb <> 3 Then change = True
+	End If
+Else
+	change = False
+End If
